@@ -70,6 +70,6 @@ public class basicTest {
 
     // Q12 Shifting the Values in the Array
     int[] arr12 = {1, 5, 10, 7, -2};
-    System.out.println(test.ShiftArr(arr12));;
+    System.out.println(test.ShiftArr(arr12));
 }   
 } 
