@@ -21,5 +21,7 @@ public class puzzlingTest {
         System.out.println(test.RandomStr());
 
         System.out.println(Arrays.toString(test.TenRandomStr()));
+        
     }
+    
 }
