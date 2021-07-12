@@ -1,4 +1,3 @@
-import java.security.Key;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -20,6 +19,10 @@ public class trackList{
             System.out.println(key);
             System.out.println(tracks.get(key));
         }
+
+        // for(HashMap.Entry<String, String> track: tracks.entrySet()){
+        //     System.out.println("Title: " + track.getKey() + ", Lyrics: " + track.getValue());
+        // }        //Another way to iterate through the hashmap
 
         return "Track title: "+ title + ", Lyrics: " + tracks.get(title) + "...";
     }
