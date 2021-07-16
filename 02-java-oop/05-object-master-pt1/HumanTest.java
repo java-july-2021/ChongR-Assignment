@@ -1,9 +1,9 @@
 public class HumanTest {
     public static void main(String[] args) {
-        Human Wizard = new Human();
+        Human1 Wizard = new Human1();
         System.out.println(Wizard.getHealth());
 
-        Human Ninja = new Human();
+        Human1 Ninja = new Human1();
 
         Wizard.attack(Ninja);
         System.out.println(Wizard.health);

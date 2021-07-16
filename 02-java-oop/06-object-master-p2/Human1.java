@@ -1,14 +1,15 @@
-public class Human {
-    public int health = 100;
+public class Human1 {
+    public double health = 100.0;
     public int strength = 3;
     public int intelligence = 3;
     public int stealth = 3;
 
-    public void setHealth(int health){
+    public void setHealth(double health){
         this.health = health;
     }
 
-    public int getHealth(){
+    public double getHealth(){
+        System.out.println("The character's hp is " + this.health);
         return this.health;
     }
     

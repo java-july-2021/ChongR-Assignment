@@ -10,10 +10,15 @@ public class HumanTest {
         System.out.println(s1.getHealth());
         System.out.println(s2.getHealth());
 
-        System.out.println(s1.howMany());
+        //System.out.println(Samurai.howMany());  //should it be Samurai.howmany or s1.howmany?
+
+        s1.howMany();
+
+
         s1.deathBlow(n1);
         System.out.println(s1.getHealth());
         s1.meditate();
         System.out.println(s1.getHealth());
+        System.out.println(n1.getHealth());
     }
 }
