@@ -9,15 +9,26 @@ public class BankAccount {
     private static int acc_created = 0;
     private static double total_money = 0;
     
-    private String RanAccNum(){      //This is creating an array of 10 numbers, need to find a way to create a single 10 digit string.
+    // private String RanAccNum(){      //This is creating an array of 10 numbers, need to find a way to create a single 10 digit string.
+    //     Random r = new Random();
+    //     int[] acc = new int[10];
+    //     for(int i=0; i<10; i++){
+    //         int rnum = r.nextInt(10);
+    //         acc[i] = rnum;
+    //     }
+    //     return Arrays.toString(acc);
+    // }
+
+    private String RanAccNum(){         //Can i do this to get a 10digit number?
         Random r = new Random();
-        int[] acc = new int[10];
+        String accNum = "";                //Can also use Integer accNum = 0;
         for(int i=0; i<10; i++){
             int rnum = r.nextInt(10);
-            acc[i] = rnum;
+            accNum += rnum;               // AccNum = accNum*10 + rnum; (if using Integer method)
         }
-        return Arrays.toString(acc);
+        return accNum;                     // return accNum.toString();
     }
+
 //--------- Initialize Bank Account------------//
     public BankAccount(){
         this.acc_num = RanAccNum();
