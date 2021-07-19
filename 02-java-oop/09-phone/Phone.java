@@ -24,7 +24,7 @@ public abstract class Phone {
     }
 
     public String getCarrier(){
-        retuen carrier;
+        return carrier;
     }
 
     public String getRingTone(){
