@@ -36,6 +36,10 @@ public class Pokemon {
         return type;
     }
 
+    public void getInfo(){
+        System.out.println("The " + name + "");
+    }
+
 
     //----------------  Setters  -----------------//
     public void setName(String name){
@@ -49,5 +53,4 @@ public class Pokemon {
     public void setType(String type){
         this.type = type;
     }
-
 }
