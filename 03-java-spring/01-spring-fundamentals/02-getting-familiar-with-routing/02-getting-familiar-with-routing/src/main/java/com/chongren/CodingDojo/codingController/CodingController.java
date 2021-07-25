@@ -22,6 +22,4 @@ public class CodingController {
 		return "Java/Spring is better!";
 	}
 	
-	
-	
 }
