@@ -34,4 +34,3 @@ public class CodingController {
 	}
 }
 
-//The webpage is showing "index.jsp", instead of rendering the .jsp
