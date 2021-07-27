@@ -1,1 +1,20 @@
 @charset "UTF-8";
+
+body{
+	background-color:gray;
+}
+
+.building{
+	padding: 10px;
+	display: inline-block;
+	border: 2px solid black;
+	text-align: center;
+}
+
+.activities{
+	width: 800px;
+	border: 2px solid black;
+	overflow-y: auto;
+	max-height: 100px;
+	min-height: 100px;
+}
