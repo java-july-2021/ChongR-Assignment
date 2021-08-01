@@ -18,7 +18,7 @@
 			<div class="upper">
 				<label>Your Name</label>
 				<input type="text"  name="name" placeholder="Name">  
-				<!-- Having a default "Name" in the box -->
+				<!-- Having a default "Name" in the box when I have a value="name"-->
 				
 				<label>Dojo Location</label>
 					<select name="location" required>
