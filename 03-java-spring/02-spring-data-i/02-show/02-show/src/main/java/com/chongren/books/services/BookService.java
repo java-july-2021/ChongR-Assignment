@@ -42,6 +42,10 @@ public class BookService {
 		return null;
 	}
 	
+	public Book updateBook(Book book) {
+		return null;
+	}
+	
 	
 	//Delete a book
 	public void deleteBook(Long id) {
