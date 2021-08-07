@@ -20,11 +20,7 @@ public class LanguagesService {
 	public List<Languages> allLang(){
 		return langRepo.findAll();
 	}
-	
-	//Create 
-	public Languages createBook(Languages l){
-		return langRepo.save(l);
-	}
+
 	
 	//Retrieves a book
 	public Languages findLang(Long id) {
@@ -37,26 +33,31 @@ public class LanguagesService {
 		}
 	}
 	
-	//Update a Language
-	public Languages updateLang(Long id, String name, String creator, String version) {
-		return null;
+	public Languages findALang(Long id) {
+		return this.langRepo.findById(id).orElse(null);
 	}
 	
-	public Languages updateLang(Languages lang) {
-		return null;
+	
+	//Create 
+	public Languages createBook(Languages newlang){
+		return this.langRepo.save(newlang);
+	}
+		
+	
+	//Update a Language
+//	public Languages updateLang(Long id, String name, String creator, String version) {
+//		return langRepo.save(ulang);
+//	}
+	
+	public Languages updateLang(Languages ulang) {
+		return this.langRepo.save(ulang);
 	}
 	
 	
 	//Delete a Language
 	public void deleteLang(Long id) {
-		langRepo.deleteById(id);
+		this.langRepo.deleteById(id);
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 }

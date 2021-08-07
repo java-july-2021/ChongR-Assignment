@@ -17,7 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.sun.istack.NotNull;
 
 @Entity
-@Table(name="languages")
+@Table(name="languages") 
 public class Languages {
 	
 	@Id
