@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -26,7 +28,9 @@ public class Lookify {
 	private String artist;
 	
 	@NotNull
-	private Integer rating;
+	@Min(1)
+	@Max(10)
+	private int rating;
 
 	
 	public Lookify() {
@@ -34,7 +38,7 @@ public class Lookify {
 		}
 	
 	public Lookify(@NotBlank @Size(min = 5) String title, @NotBlank @Size(min = 5) String artist,
-			Integer rating) {
+			int rating) {
 		this.title = title;
 		this.artist = artist;
 		this.rating = rating;
@@ -68,7 +72,7 @@ public class Lookify {
 		return rating;
 	}
 
-	public void setRating(Integer rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 

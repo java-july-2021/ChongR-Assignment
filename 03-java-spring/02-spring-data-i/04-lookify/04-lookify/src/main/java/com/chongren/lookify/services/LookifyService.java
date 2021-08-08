@@ -25,20 +25,35 @@ public class LookifyService {
 		return this.LRepo.findById(id).orElse(null);
 	}
 	
+	
+	//Top 10
+	public List<Lookify> topTenByRating(){
+		return LRepo.fingTop10ByOrderByRaingDesc();
+	}
+	
+	
+	//Search by Artist
+	public List<Lookify> searchASong(String artist){
+		return LRepo.findByArtistContaining(artist);
+	}
+	
+	
 	//Create a song
 	public Lookify addASong(Lookify newsong) {
 		return this.LRepo.save(newsong);
 	}
+	
 	
 	//Delete a song
 	public void deleteASong(Long id) {
 		this.LRepo.deleteById(id);
 	}
 	
+	
 	//Update a song
-		public Lookify updateASong(Lookify usong) {
-			return this.LRepo.save(usong);
-		}
+	public Lookify updateASong(Lookify usong) {
+		return this.LRepo.save(usong);
+	}
 		
 	
 }

@@ -1,7 +1,5 @@
 package com.chongren.lookify.controllers;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chongren.lookify.models.Lookify;
 import com.chongren.lookify.services.LookifyService;
@@ -32,21 +31,31 @@ public class LookifyController {
 		return "index.jsp";
 	}
 	
+	
 	//DashBoard
 	@GetMapping("/dashboard")
 	public String dashboard(Model viewModel) {
-		List<Lookify> allSongs = this.LServ.getAll();
-		viewModel.addAttribute("allSongs", allSongs);
+//		List<Lookify> allSongs = this.LServ.getAll();
+		viewModel.addAttribute("allSongs", LServ.getAll());
 		return "dashboard.jsp";
 	}
 	
+	
 	//Create New Song
+	@GetMapping("/songs/")
+	public String createNewSong(@Valid @ModelAttribute("song") Lookify lookify, BindingResult result) {
+		if(result.hasErrors())
+			return "/songs/new.jsp";
+		LServ.addASong(lookify);
+		return "redirect:/songs";
+	}
 	@PostMapping("/songs/new")
-	public String addNewSong(@Valid @ModelAttribute("song") Lookify lookify, BindingResult result, Model viewModel) {
-		List<Lookify> allSongs = this.LServ.getAll();
-		viewModel.addAttribute("allSongs", allSongs);
+	public String addNewSong(@ModelAttribute("song") Lookify lookify, Model viewModel) {
+		viewModel.addAttribute("song", lookify);
 		return "new.jsp";
 	}
+	
+		
 	
 	//Retrieve Song
 	@GetMapping("/songs/{id}")
@@ -55,6 +64,27 @@ public class LookifyController {
 		viewModel.addAttribute("song", songToDisplay);
 		return "show.jsp";
 	}
+	
+	
+	
+	//Search a Song
+	@GetMapping("/songs/search")
+	public String searchASong(@RequestParam("artist") String artist, Model viewModel) {
+		viewModel.addAttribute("song", LServ.searchASong(artist));
+		viewModel.addAttribute("artist", artist);
+		return "search.jsp";
+	}
+	
+	
+	
+	//Top 10 Songs
+	@GetMapping("songs/topTen")
+	public String topTen(Model viewModel) {
+		viewModel.addAttribute("song", LServ.topTenByRating());
+		return "topTen.jsp";
+	}
+	
+	
 	
 	//Update Song
 //	@PostMapping("/edit/{id}")
