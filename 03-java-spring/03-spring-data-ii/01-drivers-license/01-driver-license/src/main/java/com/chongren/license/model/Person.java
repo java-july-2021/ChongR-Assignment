@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -27,11 +29,22 @@ public class Person {
 	@NotNull
 	private String lastName;
 	@Column(updatable=false)
-	private Date createAt;
-	private Date updateAt;
+	private Date createdAt;
+	private Date updatedAt;
 	
-	@OneToOne(mappedBy="persons", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private String license;
+	@PrePersist
+    protected void onCreate() {
+    	this.createdAt = new Date();
+    }
+    
+    @PreUpdate
+    protected void onUpdate() {
+    	this.updatedAt = new Date();
+    }
+///////////////////////////////////////////////////////////////////////////
+    
+	@OneToOne(mappedBy="person", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private License license;
 
 ///////////////////////////////////////////////////////////////////////////    
 	
@@ -76,37 +89,35 @@ public class Person {
 		this.lastName = lastName;
 	}
 
-
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-
-
-	public Date getUpdateAt() {
-		return updateAt;
-	}
-
-
-	public void setUpdateAt(Date updateAt) {
-		this.updateAt = updateAt;
-	}
-
-
-	public String getLicense() {
+	
+	public License getLicense() {
 		return license;
 	}
 
-
-	public void setLicense(String license) {
+	
+	public void setLicense(License license) {
 		this.license = license;
 	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+
 	
-	
+	 
 	
 	
 	

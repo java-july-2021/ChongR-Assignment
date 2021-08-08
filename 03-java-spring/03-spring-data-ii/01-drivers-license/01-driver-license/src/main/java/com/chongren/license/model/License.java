@@ -15,6 +15,8 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.sun.istack.NotNull;
 
 @Entity
@@ -23,11 +25,11 @@ public class License {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotBlank
+	
+	private Integer number;
 	@NotNull
-	private int number;
-	@NotNull
-	private Date expiration_date;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date expirationDate;
 	@NotBlank
 	private String state;
 	@Column(updatable = false)
@@ -44,6 +46,8 @@ public class License {
     	this.updatedAt = new Date();
     }
     
+///////////////////////////////////////////////////////////////////////////
+    
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="person_id")
     private Person person;
@@ -54,15 +58,16 @@ public class License {
 	
 	}
 
-	public License(@NotBlank int number, Date expiration_date, @NotBlank String state) {
+	public License(@NotBlank int number, Date expirationDate, @NotBlank String state) {
 		super();
 		this.number = number;
-		this.expiration_date = expiration_date;
+		this.expirationDate = expirationDate;
 		this.state = state;
 	}
 	
 ////////////////////////////////////////////////////////////////////////////
-	
+
+
 	public Long getId() {
 		return id;
 	}
@@ -71,20 +76,20 @@ public class License {
 		this.id = id;
 	}
 
-	public int getNumber() {
+	public Integer getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(Integer number) {
 		this.number = number;
 	}
 
-	public Date getExpiration_date() {
-		return expiration_date;
+	public Date getExpirationDate() {
+		return expirationDate;
 	}
 
-	public void setExpiration_date(Date expiration_date) {
-		this.expiration_date = expiration_date;
+	public void setExpirationDate(Date expirationDate) {
+		this.expirationDate = expirationDate;
 	}
 
 	public String getState() {
@@ -119,7 +124,14 @@ public class License {
 		this.person = person;
 	}
 	
-     
-    
+	public String returnLicenseNumbers() {
+		int numberOfZeros = 7 - Integer.toString(this.number).length();
+		StringBuilder sb = new StringBuilder();
+		for(int i=0; i< numberOfZeros; i++) {
+			sb.append(0);
+		}
+		return String.format("%s%d", sb, this.number);
+	}
+
 
 }
