@@ -15,7 +15,7 @@
 <form:form action="/new" method="post" modelAttribute="person">
 
 <p>
-<form:label path="firstName">Frist Name:</form:label>
+<form:label path="firstName">First Name:</form:label>
 <form:input path="firstName"/>
 <form:errors path="firstName"></form:errors>
 </p>

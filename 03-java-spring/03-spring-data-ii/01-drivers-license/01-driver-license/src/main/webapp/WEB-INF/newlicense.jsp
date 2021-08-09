@@ -18,12 +18,13 @@
 <p>
 <form:label path="person">Person:</form:label>
 <form:errors path="person"/>
+
 <form:select path="person">
 <c:forEach items="${people}" var="person">
 <option value="${person.id}">${person.firstName} ${person.lastName}</option>
 </c:forEach>
-
 </form:select>
+
 </p>
 
 <p>
