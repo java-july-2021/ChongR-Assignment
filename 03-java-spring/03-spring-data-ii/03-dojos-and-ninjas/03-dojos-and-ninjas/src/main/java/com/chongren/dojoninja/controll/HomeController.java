@@ -42,7 +42,7 @@ public class HomeController {
 			return "newdojo.jsp";
 		}
 		this.mServ.createDojo(dojo);
-		return "redirect:/";
+		return "redirect:/"; 
 	}
 	
 	

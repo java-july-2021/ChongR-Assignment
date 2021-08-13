@@ -10,7 +10,8 @@
 <title>This Location Ninjas</title>
 </head>
 <body>
-
+ 
+<h1><c:out value="${dojo.name}"/> Location Ninjas </h1>
 <table>
 <tr>
 <th>First Name</th>
@@ -19,7 +20,7 @@
 </tr>
 <tbody>
 
-<c:forEach items="${dojo.ninjas}" var="ninja">
+<c:forEach items="${dojo.ninjas }" var="ninja">
 <tr>
 <td>${ninja.firstName}</td>
 <td>${ninja.lastName}</td>
