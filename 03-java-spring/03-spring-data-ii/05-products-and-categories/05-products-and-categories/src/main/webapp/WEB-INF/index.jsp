@@ -23,6 +23,7 @@
 <table class="table table-dark">
 <tr>
 	<th>ID</th>
+	<th>Category</th>
 </tr>
 <tbody>
 

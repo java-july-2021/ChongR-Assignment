@@ -51,12 +51,12 @@ public class Product {
     
  ////////////////////////////////////////////////////  
     
-    @ManyToMany(fetch=FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-    		name="prodcat",
-    		joinColumns = @JoinColumn(name="product_id"),
-    		inverseJoinColumns = @JoinColumn(name="category_id"))
-    
+        name = "categories_products", 
+        joinColumns = @JoinColumn(name = "product_id"), 
+        inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
     private List<Category> categories;
 
     ////////////////////////////////////////////////////  

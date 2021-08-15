@@ -14,13 +14,14 @@
 </head>
 <body>
 
-<form:form action="/product/new" method="POST" modelAttribute="product">
+<form:form action="/newproduct" method="post">
 
 <p>
 <form:label path="name">Name: </form:label>
 <form:errors  path="name"></form:errors>
 <form:input path="name"/>
 </p>
+
 
 <p>
 <form:label path="description">Description: </form:label>
@@ -32,7 +33,7 @@
 <p>
 <form:label path="price">Price: </form:label>
 <form:errors  path="price"></form:errors>
-<form:input path="price"/>
+<form:input type="number" step="0.01" path="price"/>
 </p>
 
 <button> Create </button>

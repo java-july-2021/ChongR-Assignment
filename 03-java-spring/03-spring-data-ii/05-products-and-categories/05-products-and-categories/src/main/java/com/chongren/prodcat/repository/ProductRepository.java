@@ -11,10 +11,8 @@ import com.chongren.prodcat.model.Product;
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long>{
 	
-//	Product findById(id);
-	
 	List<Product> findAll();
-	
-    List<Product> findAllByCategory(Category category);
 
+    List<Product> findByCategoriesNotContains(Category category);
+    
 }

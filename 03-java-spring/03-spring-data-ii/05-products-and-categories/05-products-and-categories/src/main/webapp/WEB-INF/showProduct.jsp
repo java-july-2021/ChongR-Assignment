@@ -13,11 +13,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Show Product</title>
 </head>
 <body>
 
 <h1>${product.name}</h1>
+<h3>${product.description}</h3>
+<h3>${product.price}</h3>
 
 <h2>Categories: </h2>
 <ul>
@@ -27,10 +29,10 @@
 </ul>
 
 
-<form:form>
+<form:form method="POST" action="/editproduct/${product.id}">
 <p>
-<form:select path="product">
-<c:forEach items="${product.categories}" var="category">
+<form:select  name="cats">   //the solution use name="product" instead of path?//
+<c:forEach items="${notInProd}" var="category">
 <option value="${category.id}">${category.name}</option>
 </c:forEach>
 </form:select>

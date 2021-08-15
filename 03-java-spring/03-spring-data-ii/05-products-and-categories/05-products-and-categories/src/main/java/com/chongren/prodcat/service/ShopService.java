@@ -14,18 +14,11 @@ import com.chongren.prodcat.repository.ProductRepository;
 public class ShopService {
 	
 	@Autowired
-	ProductRepository pRepo;
+	private  ProductRepository pRepo;
 	
 	@Autowired
-	CategoryRepository cRepo;
+	private  CategoryRepository cRepo;
 	
-////	//Save category to product
-//	public Category addCatToProd(Long categoryId, Long productId) {
-//		Category thisCategory = cRepo.findById(categoryId);
-//		Product thisProduct = pRepo.findById(productId);
-//	    thisCategory.products.add(thisProduct);
-//	    return cRepo.save(thisCategory);
-//	}
 	
 	//-------------Product--------------//
 	
@@ -34,7 +27,7 @@ public class ShopService {
 		return this.pRepo.save(newProduct);
 	}
 	
-	//Find Product
+	//Find a product
 	public Product findProduct(Long id) {
 		return this.pRepo.findById(id).orElse(null);
 	}
@@ -76,27 +69,43 @@ public class ShopService {
 	public void deleteCategory(Long id) {
 		this.cRepo.deleteById(id);
 	}
-	
+
 	//Show all category
 	public List<Category> showAllCategory(){
 		return cRepo.findAll();
 	}
 	
-//	//----------------Cross-----------------//
-//	
-////	//Save a category to a product
-////	public Category saveCatToProd(Category cid, Product pid) {
-////		Category thisCat = cRepo.findById(cid);
-////		Product thisProd = pRepo.findById(pid);
-////		
-//////		Category cat = this.findCategory(cid);  //
-//////		Product prod = this.findProduct(pid);    //
-////		
-////		
-////		thisCat.getProducts().add(thisProd);
-////		return cRepo.save(cid);
-////	}
-//	
+	
+	//----------------Cross-----------------//
+	
+	//Save a category to a product
+	public void addCatToProd(Category category, Product product) {
+		List<Category> exsitCat  = product.getCategories();
+		exsitCat.add(category);
+		this.pRepo.save(product);
+
+	}
+	
+	//Save a product to a category
+		public void addProdToCat(Category category, Product product) {
+			List<Product> exsitProd  = category.getProducts();
+			exsitProd.add(product);
+			this.cRepo.save(category);
+
+		}
+	
+	
+	public List<Category> findCatNotInProd(Product product){
+		
+		return this.cRepo.findByProductsNotContains(product);
+	}
+	
+	
+	public List<Product> findProdNotInCat(Category category){
+			
+			return this.pRepo.findByCategoriesNotContains(category);
+		}
+	
     
 }
 

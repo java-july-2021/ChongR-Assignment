@@ -21,15 +21,15 @@
 <h2>Products: </h2>
 <ul>
 <c:forEach items="${category.products}" var="product">
-<li>${product.name}
+<li>${product.name} | ${product.description} | ${product.price}
 </c:forEach>
 </ul>
 
 
-<form:form>
+<form:form method="POST" action="/editcategory/${category.id}">
 <p>
-<form:select path="category">
-<c:forEach items="${caregory.products}" var="product">
+<form:select name="prod">
+<c:forEach items="${notInCat}" var="product">
 <option value="${product.id}">${product.name}</option>
 </c:forEach>
 </form:select>
