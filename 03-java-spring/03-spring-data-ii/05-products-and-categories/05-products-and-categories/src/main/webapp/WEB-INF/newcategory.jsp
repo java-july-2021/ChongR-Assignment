@@ -15,7 +15,7 @@
 <body>
 <h1>New Category</h1>
 
-<form:form method="POST" action="/newcategory">
+<form:form method="POST" action="/newcategory" modelAttribute="category">
 
 <p>
 <form:label path="name">Name: </form:label>

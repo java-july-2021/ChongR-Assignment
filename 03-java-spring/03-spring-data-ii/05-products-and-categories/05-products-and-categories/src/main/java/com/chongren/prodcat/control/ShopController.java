@@ -48,7 +48,7 @@ public class ShopController {
 	
 	//------------------------- New Category ------------------------//
 	@GetMapping("/category/new")
-	public String newCategory() {
+	public String newCategory(@ModelAttribute("category")Category category) {
 		return "newcategory.jsp";
 	}
 

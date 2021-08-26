@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<form:form action="/newproduct" method="post">
+<form:form action="/newproduct" method="post" modelAttribute="product">
 
 <p>
 <form:label path="name">Name: </form:label>
